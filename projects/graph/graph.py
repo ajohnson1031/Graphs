@@ -13,13 +13,23 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        if vertex_id not in self.vertices:
+            self.vertices[vertex_id] = set()
+        else: 
+            print(f'Vertex at position [{vertex_id}] already exists.')
+      
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        try:
+            self.vertices[v1].add(v2)
+        except KeyError as error:
+            print(str(f'Vertex [{error}] does not exist!'))
+
+            
+        
 
     def get_neighbors(self, vertex_id):
         """
@@ -86,6 +96,9 @@ if __name__ == '__main__':
     graph.add_vertex(5)
     graph.add_vertex(6)
     graph.add_vertex(7)
+    ## start test addition
+    graph.add_vertex(7)
+    ## end test addition
     graph.add_edge(5, 3)
     graph.add_edge(6, 3)
     graph.add_edge(7, 1)
@@ -96,6 +109,9 @@ if __name__ == '__main__':
     graph.add_edge(3, 5)
     graph.add_edge(2, 3)
     graph.add_edge(4, 6)
+    ## start test addition
+    graph.add_edge(8, 6)
+    ## end test addition
 
     '''
     Should print:
